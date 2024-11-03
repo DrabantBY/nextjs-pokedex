@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const NotFound = () => {
 	return (
-		<section className="h-full flex flex-col justify-center text-center">
+		<section className="flex-auto flex flex-col justify-center text-center">
 			<h6 className="text-lg font-semibold text-gray-500">404</h6>
 			<h2 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
 				Page not found
