@@ -1,4 +1,10 @@
+import { Metadata } from 'next';
 import { getPokemonList } from '@/app/lib/fetch/getPokemon';
+
+export const metadata: Metadata = {
+	title: 'Pokedex | pokemon',
+	description: 'Pokedex app pokemon page',
+};
 
 const PokemonPage = async () => {
 	const data = await getPokemonList();

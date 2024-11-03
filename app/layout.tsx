@@ -1,6 +1,8 @@
 import localFont from 'next/font/local';
-import Template from '@/components/Template';
+import Template from '@/app/Template';
+import StoreProvider from './StoreProvider';
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import './globals.css';
 
 const geistSans = localFont({
@@ -19,17 +21,15 @@ export const metadata: Metadata = {
 	description: 'test task from SagTech',
 };
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html className="h-full bg-gray-100" lang="en">
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
 			>
-				<Template>{children}</Template>
+				<StoreProvider>
+					<Template>{children}</Template>
+				</StoreProvider>
 			</body>
 		</html>
 	);

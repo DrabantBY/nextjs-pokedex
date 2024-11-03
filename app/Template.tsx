@@ -1,11 +1,7 @@
-import Header from './Header';
+import Header from './components/Header';
 import type { ReactNode } from 'react';
 
-type TemplatePropsType = {
-	children: ReactNode;
-};
-
-const Template = ({ children }: TemplatePropsType) => {
+const Template = ({ children }: { children: ReactNode }) => {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<Header />
