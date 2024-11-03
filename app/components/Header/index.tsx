@@ -1,19 +1,12 @@
 'use client';
 
-import { useState, useCallback } from 'react';
-
+import useToggle from '@/app/lib/hooks/useToogle';
 import Logo from './Logo';
 import NavMenu from './NavMenu';
 import MenuBtn from './MenuBtn';
 
 const Header = () => {
-	const [isOpen, setIsOpen] = useState(false);
-	const closeMenu = useCallback(() => {
-		setIsOpen(false);
-	}, []);
-	const toggleMenu = useCallback(() => {
-		setIsOpen((state) => !state);
-	}, []);
+	const { state, toggle, close } = useToggle(false);
 
 	return (
 		<header className="bg-gray-800">
@@ -23,13 +16,10 @@ const Header = () => {
 						<Logo />
 						<NavMenu className="hidden ml-10 md:flex items-baseline space-x-4" />
 					</div>
-					<MenuBtn isMenuOpen={isOpen} toggleMenu={toggleMenu} />
+					<MenuBtn isMenuOpen={state} toggleMenu={toggle} />
 				</div>
-				{isOpen ? (
-					<NavMenu
-						className="md:hidden space-y-1 pb-3 pt-2"
-						onClick={closeMenu}
-					/>
+				{state ? (
+					<NavMenu className="md:hidden space-y-1 pb-3 pt-2" onClick={close} />
 				) : null}
 			</div>
 		</header>
