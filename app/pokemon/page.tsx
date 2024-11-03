@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getPokemonList } from '@/app/lib/fetch/getPokemon';
+import PokemonList from '../components/PokemonList';
 
 export const metadata: Metadata = {
 	title: 'Pokedex | pokemon',
@@ -9,15 +10,7 @@ export const metadata: Metadata = {
 const PokemonPage = async () => {
 	const data = await getPokemonList();
 
-	console.log(data);
-
-	return (
-		<ul>
-			{data.map(({ name }) => (
-				<li key={name}>{name}</li>
-			))}
-		</ul>
-	);
+	return <PokemonList pokemon={data} />;
 };
 
 export default PokemonPage;
