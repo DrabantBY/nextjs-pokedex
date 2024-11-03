@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import Logo from './Logo';
 import NavMenu from './NavMenu';
@@ -8,6 +8,12 @@ import MenuBtn from './MenuBtn';
 
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const closeMenu = useCallback(() => {
+		setIsOpen(false);
+	}, []);
+	const toggleMenu = useCallback(() => {
+		setIsOpen((state) => !state);
+	}, []);
 
 	return (
 		<header className="bg-gray-800">
@@ -17,9 +23,14 @@ const Header = () => {
 						<Logo />
 						<NavMenu className="hidden ml-10 md:flex items-baseline space-x-4" />
 					</div>
-					<MenuBtn isMenuOpen={isOpen} toggleMenu={setIsOpen} />
+					<MenuBtn isMenuOpen={isOpen} toggleMenu={toggleMenu} />
 				</div>
-				{isOpen ? <NavMenu className="md:hidden space-y-1 pb-3 pt-2" /> : null}
+				{isOpen ? (
+					<NavMenu
+						className="md:hidden space-y-1 pb-3 pt-2"
+						onClick={closeMenu}
+					/>
+				) : null}
 			</div>
 		</header>
 	);

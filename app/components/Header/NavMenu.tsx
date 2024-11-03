@@ -1,8 +1,10 @@
 import { usePathname } from 'next/navigation';
+import { memo } from 'react';
 import NavLink from './NavLink';
 
 type NavMenuPropsType = {
 	className: string;
+	onClick?: () => void;
 };
 
 const NavMenu = (props: NavMenuPropsType) => {
@@ -21,4 +23,4 @@ const NavMenu = (props: NavMenuPropsType) => {
 	);
 };
 
-export default NavMenu;
+export default memo(NavMenu);

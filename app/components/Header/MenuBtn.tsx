@@ -1,6 +1,8 @@
+import { memo } from 'react';
+
 type MenuBtnPropsType = {
 	isMenuOpen: boolean;
-	toggleMenu: (value: boolean) => void;
+	toggleMenu: () => void;
 };
 
 const MenuBtn = ({ isMenuOpen, toggleMenu }: MenuBtnPropsType) => {
@@ -11,7 +13,7 @@ const MenuBtn = ({ isMenuOpen, toggleMenu }: MenuBtnPropsType) => {
 				className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
 				aria-controls="mobile-menu"
 				aria-expanded="false"
-				onClick={() => toggleMenu(!isMenuOpen)}
+				onClick={toggleMenu}
 			>
 				<span className="sr-only">Open menu</span>
 				<span className="absolute -inset-0.5"></span>
@@ -52,4 +54,4 @@ const MenuBtn = ({ isMenuOpen, toggleMenu }: MenuBtnPropsType) => {
 	);
 };
 
-export default MenuBtn;
+export default memo(MenuBtn);

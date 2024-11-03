@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { memo } from 'react';
 
 type NavLinkPropsType = {
 	route: string;
@@ -20,4 +21,4 @@ const NavLink = ({ route, active }: NavLinkPropsType) => {
 	);
 };
 
-export default NavLink;
+export default memo(NavLink);
