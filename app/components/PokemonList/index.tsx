@@ -1,6 +1,6 @@
 'use client';
 import { useAppDispatch } from '@/app/lib/redux/hooks';
-import { addToFavorites } from '@/app/lib/redux/actions';
+import { addFavoriteAction } from '@/app/lib/redux/actions';
 
 import type { PokemonType } from '@/app/types/pokemonTypes';
 
@@ -17,7 +17,7 @@ const PokemonList = ({ pokemon }: PokemonPropsType) => {
 				<li key={character.name}>
 					<button
 						type="button"
-						onClick={() => dispatch(addToFavorites(character))}
+						onClick={() => dispatch(addFavoriteAction(character))}
 					>
 						{character.name}
 					</button>

@@ -1,3 +1,4 @@
 import { favoritesSlice } from './slices';
 
-export const { addToFavorites, removeFromFavorites } = favoritesSlice.actions;
+export const { addFavoriteAction, removeFavoriteAction } =
+	favoritesSlice.actions;

@@ -14,16 +14,14 @@ export const favoritesSlice = createSlice({
 	name: 'favorites',
 	initialState,
 	reducers: {
-		addToFavorites: (state, action: PayloadAction<PokemonType>) => {
+		addFavoriteAction: (state, action: PayloadAction<PokemonType>) => {
 			state.pokemon = [...state.pokemon, action.payload];
 		},
 
-		removeFromFavorites: (state, action: PayloadAction<PokemonType>) => {
+		removeFavoriteAction: (state, action: PayloadAction<PokemonType>) => {
 			state.pokemon = state.pokemon.filter(
 				(character) => character.name !== action.payload.name
 			);
 		},
 	},
 });
-
-// export default favoritesSlice.reducer;
