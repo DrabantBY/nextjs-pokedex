@@ -7,13 +7,9 @@ type TemplatePropsType = {
 
 const Template = ({ children }: TemplatePropsType) => {
 	return (
-		<div className="min-h-full flex flex-col">
+		<div className="min-h-screen flex flex-col">
 			<Header />
-			<main className="flex-auto">
-				<div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-					{children}
-				</div>
-			</main>
+			<main className="flex-auto px-4 sm:px-6 lg:px-8">{children}</main>
 		</div>
 	);
 };

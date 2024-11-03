@@ -12,7 +12,7 @@ const NavLink = ({ route, active }: NavLinkPropsType) => {
 	return (
 		<Link
 			href={route}
-			className={`block rounded-md px-3 py-2 text-sm capitalize font-medium ${activeClasses}`}
+			className={`block rounded-md px-3 py-2 text-sm capitalize font-sm ${activeClasses}`}
 			aria-current={active ? 'page' : active}
 		>
 			{route.slice(1)}

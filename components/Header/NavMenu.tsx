@@ -10,6 +10,7 @@ const NavMenu = (props: NavMenuPropsType) => {
 	const links = [
 		{ route: '/pokemon', active: pathname === '/pokemon' },
 		{ route: '/favorites', active: pathname === '/favorites' },
+		{ route: '/error', active: pathname === '/error' },
 	];
 
 	return (
