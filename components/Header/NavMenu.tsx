@@ -7,14 +7,16 @@ type NavMenuPropsType = {
 
 const NavMenu = (props: NavMenuPropsType) => {
 	const pathname = usePathname();
+	const links = [
+		{ route: '/pokemon', active: pathname === '/pokemon' },
+		{ route: '/favorites', active: pathname === '/favorites' },
+	];
+
 	return (
 		<nav {...props}>
-			<NavLink route={'/'} label={'Pokemons'} isActive={pathname === '/'} />
-			<NavLink
-				route={'/favorites'}
-				label={'Favorites'}
-				isActive={pathname === '/favorites'}
-			/>
+			{links.map((link) => (
+				<NavLink key={link.route} {...link} />
+			))}
 		</nav>
 	);
 };
