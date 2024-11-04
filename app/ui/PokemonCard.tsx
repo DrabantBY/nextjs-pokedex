@@ -6,13 +6,13 @@ import type { MouseEventHandler } from 'react';
 import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
 
 type PokemonCardPropsType = PokemonDetailsType & {
-	isFavorite: boolean;
+	favorite: boolean;
 	toggleFavorite: (value: PokemonDetailsType) => void;
 };
 
 export const PokemonCard = ({
 	toggleFavorite,
-	isFavorite,
+	favorite,
 	...character
 }: PokemonCardPropsType) => {
 	const { src, name, kinds } = character;
@@ -22,13 +22,18 @@ export const PokemonCard = ({
 		toggleFavorite(character);
 	};
 
-	const active = isFavorite
+	const active = favorite
 		? 'bg-gray-700 text-white'
 		: 'hover:bg-gray-500 hover:text-white text-gray-500';
 
 	return (
 		<li className="group relative shadow-xl rounded-md overflow-hidden hover:shadow-md">
-			<Link href={`/pokemon/${name}`}>
+			<Link
+				href={{
+					pathname: `/pokemon/${name}`,
+					query: { favorite },
+				}}
+			>
 				<figure className=" relative w-full bg-gray-100 h-36 group-hover:bg-gray-200">
 					<Image src={src} alt="Pokemon picture" fill={true} priority />
 				</figure>

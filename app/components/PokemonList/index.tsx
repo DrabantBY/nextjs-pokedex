@@ -29,7 +29,7 @@ const PokemonList = ({ pokemon }: PokemonPropsType) => {
 							<PokemonCard
 								key={character.id}
 								{...character}
-								isFavorite={isFavorite}
+								favorite={isFavorite}
 								toggleFavorite={isFavorite ? removeFavorite : addFavorite}
 							/>
 						);

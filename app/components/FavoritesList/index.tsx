@@ -22,7 +22,7 @@ const FavoritesList = () => {
 							<PokemonCard
 								key={favorite.id}
 								{...favorite}
-								isFavorite={true}
+								favorite={true}
 								toggleFavorite={removeFavorite}
 							/>
 						);
