@@ -16,6 +16,7 @@ const MenuBtn = ({ isMenuOpen, toggleMenu }: MenuBtnPropsType) => {
 				onClick={toggleMenu}
 			>
 				<span className="sr-only">Open menu</span>
+
 				<span className="absolute -inset-0.5"></span>
 
 				<svg

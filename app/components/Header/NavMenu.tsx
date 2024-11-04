@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 import { memo } from 'react';
-import NavLink from './NavLink';
+import NavLink from '@/app/ui/NavLink';
 
 type NavMenuPropsType = {
 	className: string;
@@ -10,8 +10,12 @@ type NavMenuPropsType = {
 const NavMenu = (props: NavMenuPropsType) => {
 	const pathname = usePathname();
 	const links = [
-		{ route: '/pokemon', active: pathname === '/pokemon' },
-		{ route: '/favorites', active: pathname === '/favorites' },
+		{ route: '/pokemon', label: 'pokemon', active: pathname === '/pokemon' },
+		{
+			route: '/favorites',
+			label: 'favorites',
+			active: pathname === '/favorites',
+		},
 	];
 
 	return (

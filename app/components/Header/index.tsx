@@ -16,8 +16,10 @@ const Header = () => {
 						<Logo />
 						<NavMenu className="hidden ml-10 md:flex items-baseline space-x-4" />
 					</div>
+
 					<MenuBtn isMenuOpen={state} toggleMenu={toggle} />
 				</div>
+
 				{state ? (
 					<NavMenu className="md:hidden space-y-1 pb-3 pt-2" onClick={close} />
 				) : null}

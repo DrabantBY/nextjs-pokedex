@@ -12,7 +12,9 @@ const initialState: FavoritesPokemonStateType = {
 
 export const favoritesSlice = createSlice({
 	name: 'favorites',
+
 	initialState,
+
 	reducers: {
 		addFavoriteAction: (state, action: PayloadAction<PokemonType>) => {
 			state.pokemon = [...state.pokemon, action.payload];

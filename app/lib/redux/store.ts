@@ -5,6 +5,7 @@ export const makeStore = () => {
 	const store = configureStore({
 		reducer: { favorites: favoritesReducer },
 	});
+
 	return store;
 };
 
