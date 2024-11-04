@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 	description: 'Pokedex app favorites page',
 };
 
-const FavoritesPage = () => {
+const FavoritesPage = async () => {
 	return <FavoritesList />;
 };
 

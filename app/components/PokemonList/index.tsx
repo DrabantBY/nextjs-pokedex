@@ -1,6 +1,6 @@
 'use client';
 
-import PokemonCard from '../PokemonCard';
+import PokemonCard from '../../ui/PokemonCard';
 import useFavorite from '@/app/lib/hooks/useFavorite';
 import { useAppSelector } from '@/app/lib/redux/hooks';
 import { selectFavorites } from '@/app/lib/redux/selectors';
