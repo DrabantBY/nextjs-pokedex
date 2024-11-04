@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { PokemonType } from '@/app/types/pokemonTypes';
+import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
 
 type FavoritesPokemonStateType = {
-	pokemon: PokemonType[];
+	pokemon: PokemonDetailsType[];
 };
 
 const initialState: FavoritesPokemonStateType = {
@@ -16,11 +17,14 @@ export const favoritesSlice = createSlice({
 	initialState,
 
 	reducers: {
-		addFavoriteAction: (state, action: PayloadAction<PokemonType>) => {
+		addFavoriteAction: (state, action: PayloadAction<PokemonDetailsType>) => {
 			state.pokemon = [...state.pokemon, action.payload];
 		},
 
-		removeFavoriteAction: (state, action: PayloadAction<PokemonType>) => {
+		removeFavoriteAction: (
+			state,
+			action: PayloadAction<PokemonDetailsType>
+		) => {
 			state.pokemon = state.pokemon.filter(
 				(character) => character.name !== action.payload.name
 			);

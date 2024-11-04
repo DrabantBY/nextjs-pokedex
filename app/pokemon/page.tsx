@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
+import PokemonList from '@/app/components/PokemonList';
 import { getPokemonList } from '@/app/lib/fetch/fetchPokemon';
-import PokemonList from '../components/PokemonList';
 
 export const metadata: Metadata = {
 	title: 'Pokedex | pokemon',

@@ -1,9 +1,9 @@
 'use client';
 
-import useToggle from '@/app/lib/hooks/useToggle';
 import Logo from './Logo';
 import NavMenu from './NavMenu';
 import MenuBtn from './MenuBtn';
+import useToggle from '@/app/lib/hooks/useToggle';
 
 const Header = () => {
 	const { state, toggle, close } = useToggle(false);

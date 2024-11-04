@@ -1,8 +1,10 @@
 import localFont from 'next/font/local';
 import Template from '@/app/Template';
 import StoreProvider from './StoreProvider';
+
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+
 import './globals.css';
 
 const geistSans = localFont({
@@ -10,6 +12,7 @@ const geistSans = localFont({
 	variable: '--font-geist-sans',
 	weight: '100 900',
 });
+
 const geistMono = localFont({
 	src: './fonts/GeistMonoVF.woff',
 	variable: '--font-geist-mono',

@@ -17,23 +17,25 @@ const PokemonList = ({ pokemon }: PokemonPropsType) => {
 	const { addFavorite, removeFavorite } = useFavorite();
 
 	return (
-		<section className="max-w-7xl px-4 sm:px-6 lg:px-8">
-			<ul className="my-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-				{pokemon.map((character) => {
-					const isFavorite = favorites.some(
-						(favorite) => favorite.id === character.id
-					);
+		<section>
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<ul className="my-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 md:gap-10">
+					{pokemon.map((character) => {
+						const isFavorite = favorites.some(
+							(favorite) => favorite.id === character.id
+						);
 
-					return (
-						<PokemonCard
-							key={character.id}
-							{...character}
-							isFavorite={isFavorite}
-							toggleFavorite={isFavorite ? removeFavorite : addFavorite}
-						/>
-					);
-				})}
-			</ul>
+						return (
+							<PokemonCard
+								key={character.id}
+								{...character}
+								isFavorite={isFavorite}
+								toggleFavorite={isFavorite ? removeFavorite : addFavorite}
+							/>
+						);
+					})}
+				</ul>
+			</div>
 		</section>
 	);
 };
