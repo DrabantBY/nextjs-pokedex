@@ -16,14 +16,24 @@ const getUrlList = async (): Promise<string[]> => {
 
 export const getPokemonDetails = async (
 	url: string,
-	id?: number
+	pokemonId?: number
 ): Promise<PokemonDetailsType> => {
-	const response = await fetch(`${url || process.env.BASE_URL}${id ?? ''}`, {
-		cache: 'force-cache',
-	});
+	const response = await fetch(
+		`${url || process.env.BASE_URL}${pokemonId ?? ''}`,
+		{
+			cache: 'force-cache',
+		}
+	);
 
-	const { stats, types, ...common }: PokemonDetailsResponseType =
-		await response.json();
+	const {
+		stats,
+		types,
+		sprites,
+		id,
+		name,
+		height,
+		weight,
+	}: PokemonDetailsResponseType = await response.json();
 
 	const param = stats.map(({ base_stat, stat }) => ({
 		value: base_stat,
@@ -32,7 +42,17 @@ export const getPokemonDetails = async (
 
 	const kinds = types.map(({ type }) => type.name);
 
-	return { ...common, kinds, param };
+	const src = sprites.other.dream_world.front_default;
+
+	return {
+		id,
+		name,
+		height,
+		weight,
+		kinds,
+		param,
+		src,
+	};
 };
 
 export const getPokemonList = async (): Promise<PokemonDetailsType[]> => {

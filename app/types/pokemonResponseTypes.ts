@@ -1,5 +1,13 @@
 import type { PokemonCommonType } from './pokemonTypes';
 
+type PokemonSpritesType = {
+	other: {
+		dream_world: {
+			front_default: string;
+		};
+	};
+};
+
 type PokemonUrlNameType = {
 	name: string;
 	url: string;
@@ -27,6 +35,7 @@ export type PokemonUrlNameResponseType = {
 };
 
 export type PokemonDetailsResponseType = PokemonCommonType & {
+	sprites: PokemonSpritesType;
 	stats: PokemonStatType[];
 	types: PokemonKindType[];
 };

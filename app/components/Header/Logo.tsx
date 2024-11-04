@@ -6,7 +6,7 @@ const Logo = () => {
 			<Image
 				className="h-8 w-8"
 				src="/pokemonball.svg"
-				alt="Your Company"
+				alt="Pokedex logo"
 				width={32}
 				height={32}
 			/>

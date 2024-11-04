@@ -2,7 +2,7 @@ import NavLink from './ui/NavLink';
 
 const NotFound = () => {
 	return (
-		<section className="flex-auto flex flex-col justify-center items-center">
+		<section className="flex flex-col grow justify-center items-center text-center">
 			<h6 className="mb-4 text-lg font-semibold text-gray-500">404</h6>
 
 			<h2 className="mb-6 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
