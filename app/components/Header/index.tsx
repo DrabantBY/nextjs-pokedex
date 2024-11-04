@@ -1,6 +1,6 @@
 'use client';
 
-import useToggle from '@/app/lib/hooks/useToogle';
+import useToggle from '@/app/lib/hooks/useToggle';
 import Logo from './Logo';
 import NavMenu from './NavMenu';
 import MenuBtn from './MenuBtn';

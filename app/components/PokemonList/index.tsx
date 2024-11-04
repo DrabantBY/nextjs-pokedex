@@ -1,14 +1,11 @@
 'use client';
 
-import { useCallback } from 'react';
 import PokemonCard from '../PokemonCard';
-import { useAppDispatch, useAppSelector } from '@/app/lib/redux/hooks';
-import {
-	addFavoriteAction,
-	removeFavoriteAction,
-} from '@/app/lib/redux/actions';
-import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
+import useFavorite from '@/app/lib/hooks/useFavorite';
+import { useAppSelector } from '@/app/lib/redux/hooks';
 import { selectFavorites } from '@/app/lib/redux/selectors';
+
+import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
 
 type PokemonPropsType = {
 	pokemon: PokemonDetailsType[];
@@ -17,17 +14,7 @@ type PokemonPropsType = {
 const PokemonList = ({ pokemon }: PokemonPropsType) => {
 	const favorites = useAppSelector(selectFavorites);
 
-	const dispatch = useAppDispatch();
-
-	const addFavorite = useCallback(
-		(value: PokemonDetailsType) => dispatch(addFavoriteAction(value)),
-		[dispatch]
-	);
-
-	const removeFavorite = useCallback(
-		(value: PokemonDetailsType) => dispatch(removeFavoriteAction(value)),
-		[dispatch]
-	);
+	const { addFavorite, removeFavorite } = useFavorite();
 
 	return (
 		<section className="max-w-7xl px-4 sm:px-6 lg:px-8">
