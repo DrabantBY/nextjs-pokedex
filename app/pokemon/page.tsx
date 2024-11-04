@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getPokemonList } from '@/app/lib/fetch/getPokemon';
+import { getPokemonList } from '@/app/lib/fetch/fetchPokemon';
 import PokemonList from '../components/PokemonList';
 
 export const metadata: Metadata = {

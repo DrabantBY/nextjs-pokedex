@@ -1,11 +1,15 @@
-export type PokemonType = {
+export type PokemonCommonType = {
+	id: number;
 	name: string;
-	url: string;
+	base_experience: number;
+	height: number;
+	weight: number;
 };
 
-export type PokemonResponseType = {
-	count: number;
-	next: string;
-	previous: null;
-	results: PokemonType[];
+export type PokemonDetailsType = PokemonCommonType & {
+	kinds: string[];
+	param: Array<{
+		value: number;
+		name: string;
+	}>;
 };

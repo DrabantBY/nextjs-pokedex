@@ -6,12 +6,12 @@ import { removeFavoriteAction } from '@/app/lib/redux/actions';
 const FavoritesList = () => {
 	const dispatch = useAppDispatch();
 	const favorites = useAppSelector(selectFavorites);
-	console.log(favorites);
 
 	return (
 		<ul>
 			{favorites.map((character) => (
 				<li key={character.name}>
+					<span>{character.id}</span>
 					<button
 						type="button"
 						onClick={() => dispatch(removeFavoriteAction(character))}
