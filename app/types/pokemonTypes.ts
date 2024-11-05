@@ -8,8 +8,5 @@ export type PokemonCommonType = {
 export type PokemonDetailsType = PokemonCommonType & {
 	src: string;
 	kinds: string[];
-	param: Array<{
-		value: number;
-		name: string;
-	}>;
+	data: Record<string, number>[];
 };

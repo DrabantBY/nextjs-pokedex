@@ -23,7 +23,7 @@ export const PokemonCard = ({
 	};
 
 	const active = favorite
-		? 'bg-gray-700 text-white'
+		? 'bg-gray-700 text-white group-hover:bg-gray-500'
 		: 'hover:bg-gray-500 hover:text-white text-gray-500';
 
 	return (
@@ -34,7 +34,11 @@ export const PokemonCard = ({
 					query: { favorite },
 				}}
 			>
-				<figure className=" relative w-full bg-gray-100 h-36 group-hover:bg-gray-200">
+				<figure
+					className={`relative h-36 w-full bg-gray-${
+						favorite ? 700 : 100
+					} group-hover:bg-gray-${favorite ? 500 : 200}`}
+				>
 					<Image src={src} alt="Pokemon picture" fill={true} priority />
 				</figure>
 
@@ -58,7 +62,7 @@ export const PokemonCard = ({
 
 				<div className="flex">
 					<button
-						className={`rounded-md px-3 py-2 text-sm mb-2 mx-2 bg-gray-200 grow ${active} font-bold`}
+						className={`rounded-md px-3 py-2 text-sm mb-2 mx-2 bg-gray-200 grow ${active} font-bold `}
 						type="button"
 						onClick={handleOnClick}
 					>

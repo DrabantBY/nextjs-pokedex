@@ -11,14 +11,13 @@ const mapDetails = ({
 
 	const src = sprites.other.dream_world.front_default;
 
-	const param = stats.map(({ base_stat, stat }) => ({
-		value: base_stat,
-		name: stat.name,
+	const data = stats.map(({ base_stat, stat }) => ({
+		[stat.name]: base_stat,
 	}));
 
 	const { id, name, height, weight } = other;
 
-	return { id, name, height, weight, src, param, kinds };
+	return { id, name, height, weight, src, data, kinds };
 };
 
 export default mapDetails;
