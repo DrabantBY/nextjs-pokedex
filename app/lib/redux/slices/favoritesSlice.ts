@@ -3,18 +3,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
 
-type FavoritesPokemonStateType = {
+type PokemonStateType = {
 	pokemon: PokemonDetailsType[];
 };
 
-const initialState: FavoritesPokemonStateType = {
+const initialFavoriteState: PokemonStateType = {
 	pokemon: [],
 };
 
-export const favoritesSlice = createSlice({
+const favoritesSlice = createSlice({
 	name: 'favorites',
 
-	initialState,
+	initialState: initialFavoriteState,
 
 	reducers: {
 		addFavoriteAction: (state, action: PayloadAction<PokemonDetailsType>) => {
@@ -31,3 +31,5 @@ export const favoritesSlice = createSlice({
 		},
 	},
 });
+
+export default favoritesSlice;
