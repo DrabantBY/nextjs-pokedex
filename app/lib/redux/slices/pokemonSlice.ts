@@ -11,7 +11,7 @@ const initialPokemonState: PokemonStateType = {
 	list: [],
 };
 
-export const pokemonSlice = createSlice({
+const pokemonSlice = createSlice({
 	name: 'pokemon',
 
 	initialState: initialPokemonState,
@@ -25,3 +25,5 @@ export const pokemonSlice = createSlice({
 		},
 	},
 });
+
+export default pokemonSlice;

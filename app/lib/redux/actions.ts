@@ -1,7 +1,10 @@
 import favoritesSlice from './slices/favoritesSlice';
-import { pokemonSlice } from './slices/pokemonSlice';
+import filterParamsSlice from './slices/filterParamsSlice';
+import pokemonSlice from './slices/pokemonSlice';
 
 export const { addFavoriteAction, removeFavoriteAction } =
 	favoritesSlice.actions;
 
 export const { addPokemonAction } = pokemonSlice.actions;
+
+export const { addFilterAction, clearFilterAction } = filterParamsSlice.actions;

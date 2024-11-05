@@ -1,17 +1,28 @@
 'use client';
 
-import { useState } from 'react';
 import type { ChangeEventHandler } from 'react';
+
+//TODO add custom hook
+import { memo, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../lib/redux/hooks';
+import { addFilterAction } from '../lib/redux/actions';
+import { selectFilterParams } from '../lib/redux/selectors';
 
 type KindFilterPropsType = {
 	options: string[];
 };
 
 const KindFilter = ({ options }: KindFilterPropsType) => {
-	const [value, setValue] = useState('');
+	const { kind } = useAppSelector(selectFilterParams);
+
+	const [value, setValue] = useState(kind);
+
+	const dispatch = useAppDispatch();
 
 	const handleOnChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
-		setValue(event.target.value);
+		const { name, value } = event.target;
+		setValue(value);
+		dispatch(addFilterAction({ [name]: value }));
 	};
 
 	return (
@@ -42,4 +53,4 @@ const KindFilter = ({ options }: KindFilterPropsType) => {
 	);
 };
 
-export default KindFilter;
+export default memo(KindFilter);
