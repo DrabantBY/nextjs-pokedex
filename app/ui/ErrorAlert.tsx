@@ -1,6 +1,6 @@
 import NavLink from './NavLink';
 
-const Error = () => {
+const ErrorAlert = () => {
 	return (
 		<section className="flex flex-col grow justify-center items-center text-center">
 			<h6 className="mb-4 text-lg font-semibold text-gray-500">404</h6>
@@ -18,4 +18,4 @@ const Error = () => {
 	);
 };
 
-export default Error;
+export default ErrorAlert;

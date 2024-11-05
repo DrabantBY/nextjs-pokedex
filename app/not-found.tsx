@@ -1,7 +1,7 @@
-import ErrorPage from './ui/ErrorPage';
+import ErrorAlert from './ui/ErrorAlert';
 
 const NotFound = () => {
-	return <ErrorPage />;
+	return <ErrorAlert />;
 };
 
 export default NotFound;
