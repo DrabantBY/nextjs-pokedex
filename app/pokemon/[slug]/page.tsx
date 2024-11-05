@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { getPokemonDetails } from '@/app/lib/fetch/fetchPokemon';
 
@@ -5,6 +6,17 @@ type DetailsPagePropsType = {
 	params: Promise<{ slug: string }>;
 	searchParams: Promise<{ favorite: string }>;
 };
+
+export async function generateMetadata({
+	params,
+}: DetailsPagePropsType): Promise<Metadata> {
+	const { slug } = await params;
+
+	return {
+		title: `Pokedex | ${slug}`,
+		description: `Pokedex app ${slug} page`,
+	};
+}
 
 const DetailsPage = async ({ params, searchParams }: DetailsPagePropsType) => {
 	const { slug } = await params;
