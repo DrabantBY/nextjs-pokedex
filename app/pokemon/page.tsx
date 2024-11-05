@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
 import PokemonList from '@/app/components/PokemonList';
-import KindFilter from '@/app/ui/KindFilter';
+import PokemonFilter from '@/app/components/PokemonFilter';
 import { getPokemonList } from '@/app/lib/fetch/fetchPokemon';
 import { getKindList } from '@/app/lib/fetch/fetchPokemonKinds';
-import NameFilter from '@/app/ui/NameFilter';
 
 export const metadata: Metadata = {
 	title: 'Pokedex | pokemon',
@@ -11,17 +10,11 @@ export const metadata: Metadata = {
 };
 
 const PokemonPage = async () => {
-	const data = await getPokemonList();
-	const kinds = await getKindList();
+	const [data, kinds] = await Promise.all([getPokemonList(), getKindList()]);
 
 	return (
 		<>
-			<section>
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<KindFilter options={kinds} />
-					<NameFilter />
-				</div>
-			</section>
+			<PokemonFilter kinds={kinds} />
 			<PokemonList pokemon={data} />
 		</>
 	);
