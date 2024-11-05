@@ -1,6 +1,6 @@
 const Nothing = () => {
 	return (
-		<section className="flex flex-col gap-4 grow justify-center items-center text-center bg-gray-100">
+		<section className="flex flex-col gap-4 grow justify-center items-center text-center">
 			<svg
 				className="mx-auto"
 				xmlns="http://www.w3.org/2000/svg"

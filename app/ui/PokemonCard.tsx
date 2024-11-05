@@ -39,7 +39,13 @@ export const PokemonCard = ({
 						favorite ? 700 : 100
 					} group-hover:bg-gray-${favorite ? 500 : 200}`}
 				>
-					<Image src={src} alt="Pokemon picture" fill={true} priority />
+					<Image
+						className="p-2"
+						src={src}
+						alt="Pokemon picture"
+						fill={true}
+						priority
+					/>
 				</figure>
 
 				<div className="flex justify-between items-center gap-2 p-2">

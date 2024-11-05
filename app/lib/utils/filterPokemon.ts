@@ -11,7 +11,8 @@ const filterPokemon = (
 
 	return pokemon.filter(
 		(character) =>
-			character.name.includes(name) && character.kinds.toString().includes(kind)
+			character.name.includes(name.toLowerCase()) &&
+			character.kinds.toString().includes(kind)
 	);
 };
 

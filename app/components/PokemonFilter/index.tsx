@@ -15,7 +15,7 @@ const PokemonFilter = ({ kinds }: PokemonFilterPropsType) => {
 	return (
 		<section>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<form className="flex item-center justify-center gap-2 mt-4">
+				<form className="flex item-center justify-center gap-2 my-4">
 					<KindFilter options={kinds} value={kind} onChange={changeFilter} />
 					<NameFilter value={name} onChange={changeFilter} />
 				</form>
