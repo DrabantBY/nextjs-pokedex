@@ -18,7 +18,10 @@ const filterParamsSlice = createSlice({
 	initialState: initialFilterParamsState,
 
 	reducers: {
-		addFilterAction: (state, action: PayloadAction<Record<string, string>>) => {
+		changeFilterAction: (
+			state,
+			action: PayloadAction<Record<string, string>>
+		) => {
 			state = Object.assign(state, action.payload);
 		},
 

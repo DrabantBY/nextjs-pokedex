@@ -7,4 +7,5 @@ export const { addFavoriteAction, removeFavoriteAction } =
 
 export const { addPokemonAction } = pokemonSlice.actions;
 
-export const { addFilterAction, clearFilterAction } = filterParamsSlice.actions;
+export const { changeFilterAction, clearFilterAction } =
+	filterParamsSlice.actions;
