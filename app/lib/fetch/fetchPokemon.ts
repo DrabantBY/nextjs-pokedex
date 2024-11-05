@@ -11,6 +11,10 @@ const getUrlList = async (): Promise<string[]> => {
 		cache: 'force-cache',
 	});
 
+	if (!response.ok) {
+		throw new Error(response.statusText);
+	}
+
 	const { results }: PokemonUrlNameResponseType = await response.json();
 
 	return results.map(({ url }) => url);
@@ -26,6 +30,10 @@ export const getPokemonDetails = async (
 			cache: 'force-cache',
 		}
 	);
+
+	if (!response.ok) {
+		throw new Error(response.statusText);
+	}
 
 	const pokemon: PokemonDetailsResponseType = await response.json();
 
