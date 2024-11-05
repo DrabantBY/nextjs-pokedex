@@ -4,7 +4,10 @@ import { memo } from 'react';
 import PokemonCard from '@/app/ui/PokemonCard';
 import useFavorite from '@/app/lib/hooks/useFavorite';
 import { useAppSelector } from '@/app/lib/redux/hooks';
-import { selectFavorites, selectPokemon } from '@/app/lib/redux/selectors';
+import {
+	selectFavorites,
+	selectFilterPokemon,
+} from '@/app/lib/redux/selectors';
 
 //TODO refactor this code
 import { addPokemonAction } from '@/app/lib/redux/actions';
@@ -19,9 +22,7 @@ type PokemonPropsType = {
 
 const PokemonList = ({ pokemon }: PokemonPropsType) => {
 	const favorites = useAppSelector(selectFavorites);
-
-	//TODO refactor this
-	const pokemonList = useAppSelector(selectPokemon);
+	const pokemonList = useAppSelector(selectFilterPokemon);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {

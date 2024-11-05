@@ -9,6 +9,7 @@ const Logo = () => {
 				alt="Pokedex logo"
 				width={32}
 				height={32}
+				priority
 			/>
 		</div>
 	);
