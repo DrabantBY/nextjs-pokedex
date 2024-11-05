@@ -31,7 +31,7 @@ const KindFilter = ({ options }: KindFilterPropsType) => {
 				htmlFor="kind"
 				className="flex select-none items-center pl-3 text-gray-700 text-md"
 			>
-				kind/:
+				kind:
 			</label>
 
 			<select

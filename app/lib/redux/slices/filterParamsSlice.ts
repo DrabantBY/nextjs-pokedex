@@ -3,12 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 type FilterParamsStateType = {
-	search: string;
+	name: string;
 	kind: string;
 };
 
 const initialFilterParamsState: FilterParamsStateType = {
-	search: '',
+	name: '',
 	kind: '',
 };
 
@@ -22,9 +22,7 @@ const filterParamsSlice = createSlice({
 			state = Object.assign(state, action.payload);
 		},
 
-		clearFilterAction: () => {
-			return initialFilterParamsState;
-		},
+		clearFilterAction: () => initialFilterParamsState,
 	},
 });
 
