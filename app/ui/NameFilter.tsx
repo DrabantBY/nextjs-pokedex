@@ -1,13 +1,28 @@
-import { memo } from 'react';
+import debounce from 'lodash.debounce';
+import { memo, useEffect, useState } from 'react';
 
-import type { ChangeEventHandler } from 'react';
+import type { ChangeEvent, ChangeEventHandler } from 'react';
 
 type NameFilterPropsType = {
 	value: string;
 	onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
-const NameFilter = (props: NameFilterPropsType) => {
+const NameFilter = ({ value, onChange }: NameFilterPropsType) => {
+	const [state, setState] = useState('');
+
+	useEffect(() => {
+		setState(value);
+	}, [value]);
+
+	const debounceOnChange = debounce(onChange, 2000);
+
+	const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setState(event.target.value);
+		debounceOnChange(event);
+	};
+
+	console.log('render');
 	return (
 		<div className="w-56 flex rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-gray-600">
 			<label
@@ -22,7 +37,8 @@ const NameFilter = (props: NameFilterPropsType) => {
 				name="name"
 				type="text"
 				className="block flex-1 border-0 bg-transparent pl-1 py-2 text-gray-500 focus:ring-0 outline-none"
-				{...props}
+				value={state}
+				onChange={handleOnChange}
 			></input>
 		</div>
 	);

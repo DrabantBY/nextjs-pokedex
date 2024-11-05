@@ -14,7 +14,7 @@ const PokemonFilter = ({ kinds }: PokemonFilterPropsType) => {
 
 	const disable =
 		!kind && !name
-			? 'bg-gray-200 text-gray-600'
+			? 'bg-gray-200 text-gray-400'
 			: 'bg-gray-700 text-white hover:bg-gray-600';
 
 	return (
