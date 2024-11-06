@@ -6,8 +6,15 @@ import type {
 } from '@/app/types/pokemonResponseTypes';
 import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
 
-const getUrlList = async (): Promise<string[]> => {
-	const response = await fetch(`${process.env.BASE_URL}pokemon/?limit=100`, {
+const POKEMON_URL = `${process.env.BASE_URL}pokemon/`;
+
+export const getUrlList = async (
+	url: string = POKEMON_URL
+): Promise<{
+	next: string | null;
+	urls: string[];
+}> => {
+	const response = await fetch(url, {
 		cache: 'force-cache',
 	});
 
@@ -15,21 +22,18 @@ const getUrlList = async (): Promise<string[]> => {
 		throw new Error(response.statusText);
 	}
 
-	const { results }: PokemonUrlNameResponseType = await response.json();
+	const { next, results }: PokemonUrlNameResponseType = await response.json();
 
-	return results.map(({ url }) => url);
+	return { next, urls: results.map(({ url }) => url) };
 };
 
 export const getPokemonDetails = async (
 	url: string,
 	slug: string | number
 ): Promise<PokemonDetailsType> => {
-	const response = await fetch(
-		`${url || `${process.env.BASE_URL}pokemon/`}${slug}`,
-		{
-			cache: 'force-cache',
-		}
-	);
+	const response = await fetch(`${url || POKEMON_URL}${slug}`, {
+		cache: 'force-cache',
+	});
 
 	if (!response.ok) {
 		throw new Error(response.statusText);
@@ -40,12 +44,17 @@ export const getPokemonDetails = async (
 	return mapDetails(pokemon);
 };
 
-export const getPokemonList = async (): Promise<PokemonDetailsType[]> => {
-	const urls = await getUrlList();
+export const getPokemonList = async (
+	url: string = POKEMON_URL
+): Promise<{
+	next: string | null;
+	pokemon: PokemonDetailsType[];
+}> => {
+	const { next, urls } = await getUrlList(url);
 
 	const pokemon = await Promise.all(
 		urls.map((url) => getPokemonDetails(url, ''))
 	);
 
-	return pokemon;
+	return { pokemon, next };
 };

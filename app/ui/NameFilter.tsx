@@ -22,7 +22,6 @@ const NameFilter = ({ value, onChange }: NameFilterPropsType) => {
 		debounceOnChange(event);
 	};
 
-	console.log('render');
 	return (
 		<div className="w-56 flex rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-gray-600">
 			<label

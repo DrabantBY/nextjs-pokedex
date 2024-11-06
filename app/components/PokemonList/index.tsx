@@ -2,25 +2,39 @@
 
 import { memo } from 'react';
 import PokemonCard from '@/app/ui/PokemonCard';
-import usePokemon from '@/app/lib/hooks/usePokemon';
 import Nothing from '@/app/ui/Nothing';
 
 import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
+import useScroll from '@/app/lib/hooks/useScroll';
+import useFavorite from '@/app/lib/hooks/useFavorite';
+import { useAppSelector } from '@/app/lib/redux/hooks';
+import {
+	selectFavorites,
+	selectFilterPokemon,
+} from '@/app/lib/redux/selectors';
 
 type PokemonPropsType = {
 	pokemon: PokemonDetailsType[];
+	next: string | null;
 };
 
-const PokemonList = ({ pokemon }: PokemonPropsType) => {
-	const { pokemonList, favoriteList, addFavorite, removeFavorite } =
-		usePokemon(pokemon);
+const PokemonList = (props: PokemonPropsType) => {
+	const listRef = useScroll(props);
+
+	const { addFavorite, removeFavorite } = useFavorite();
+
+	const pokemonList = useAppSelector(selectFilterPokemon);
+	const favoriteList = useAppSelector(selectFavorites);
 
 	return pokemonList.length === 0 ? (
 		<Nothing />
 	) : (
 		<section>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<ul className="my-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 md:gap-10">
+				<ul
+					ref={listRef}
+					className="my-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 md:gap-10"
+				>
 					{pokemonList.map((character) => {
 						let isFavorite = false;
 

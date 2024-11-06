@@ -15,7 +15,7 @@ const PokemonPage = async () => {
 	return (
 		<>
 			<PokemonFilter kinds={kinds} />
-			<PokemonList pokemon={data} />
+			<PokemonList {...data} />
 		</>
 	);
 };
