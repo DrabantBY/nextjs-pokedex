@@ -7,7 +7,7 @@ import type {
 import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
 
 const getUrlList = async (): Promise<string[]> => {
-	const response = await fetch(`${process.env.BASE_URL}pokemon/`, {
+	const response = await fetch(`${process.env.BASE_URL}pokemon/?limit=100`, {
 		cache: 'force-cache',
 	});
 

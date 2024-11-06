@@ -11,8 +11,6 @@ type PokemonPropsType = {
 	pokemon: PokemonDetailsType[];
 };
 
-//TODO https://dev.to/cantem/how-to-write-a-debounce-function-1bdf
-
 const PokemonList = ({ pokemon }: PokemonPropsType) => {
 	const { pokemonList, favoriteList, addFavorite, removeFavorite } =
 		usePokemon(pokemon);
