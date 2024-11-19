@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import PokemonList from '@/app/components/PokemonList';
-import PokemonFilter from '@/app/components/PokemonFilter';
-import { getPokemonList } from '@/app/lib/fetch/fetchPokemon';
-import { getKindList } from '@/app/lib/fetch/fetchPokemonKinds';
+import PokemonList from '@/components/PokemonList';
+import PokemonFilter from '@/components/PokemonFilter';
+import { getPokemonList } from '@/lib/fetch/fetchPokemon';
+import { getKindList } from '@/lib/fetch/fetchPokemonKinds';
 
 export const metadata: Metadata = {
 	title: 'Pokedex | pokemon',

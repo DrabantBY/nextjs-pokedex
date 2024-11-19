@@ -1,10 +1,10 @@
 'use client';
 
-import PokemonCard from '@/app/ui/PokemonCard';
-import Nothing from '@/app/ui/Nothing';
-import useFavorite from '@/app/lib/hooks/useFavorite';
-import { useAppSelector } from '@/app/lib/redux/hooks';
-import { selectFavorites } from '@/app/lib/redux/selectors';
+import PokemonCard from '@/ui/PokemonCard';
+import Nothing from '@/ui/Nothing';
+import useFavorite from '@/lib/hooks/useFavorite';
+import { useAppSelector } from '@/lib/redux/hooks';
+import { selectFavorites } from '@/lib/redux/selectors';
 
 const FavoritesList = () => {
 	const favorites = useAppSelector(selectFavorites);

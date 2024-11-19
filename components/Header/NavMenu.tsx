@@ -1,10 +1,11 @@
+'use client';
+
 import { memo } from 'react';
 import { usePathname } from 'next/navigation';
-import NavLink from '@/app/ui/NavLink';
+import NavLink from '@/ui/NavLink';
 
 type NavMenuPropsType = {
 	className: string;
-	onClick?: () => void;
 };
 
 const NavMenu = (props: NavMenuPropsType) => {

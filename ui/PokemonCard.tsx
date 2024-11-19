@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import type { MouseEventHandler } from 'react';
-import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
+import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 type PokemonCardPropsType = PokemonDetailsType & {
 	favorite: boolean;

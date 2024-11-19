@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import filterPokemon from '@/app/lib/utils/filterPokemon';
+import filterPokemon from '@/lib/utils/filterPokemon';
 
 import type { RootState } from './store';
 

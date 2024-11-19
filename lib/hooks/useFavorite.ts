@@ -1,11 +1,8 @@
 import { useCallback } from 'react';
-import {
-	addFavoriteAction,
-	removeFavoriteAction,
-} from '@/app/lib/redux/actions';
-import { useAppDispatch } from '@/app/lib/redux/hooks';
+import { addFavoriteAction, removeFavoriteAction } from '@/lib/redux/actions';
+import { useAppDispatch } from '@/lib/redux/hooks';
 
-import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
+import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 const useFavorite = () => {
 	const dispatch = useAppDispatch();

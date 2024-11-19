@@ -1,4 +1,4 @@
-import type { PokemonUrlNameResponseType } from '@/app/types/pokemonResponseTypes';
+import type { PokemonUrlNameResponseType } from '@/types/pokemonResponseTypes';
 
 export const getKindList = async (): Promise<string[]> => {
 	const response = await fetch(`${process.env.BASE_URL}type/?limit=21`, {

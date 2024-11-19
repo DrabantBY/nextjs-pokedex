@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { getPokemonDetails } from '@/app/lib/fetch/fetchPokemon';
+import { getPokemonDetails } from '@/lib/fetch/fetchPokemon';
 
 type DetailsPagePropsType = {
 	params: Promise<{ slug: string }>;

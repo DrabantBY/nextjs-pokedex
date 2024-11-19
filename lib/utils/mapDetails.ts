@@ -1,5 +1,5 @@
-import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
-import type { PokemonDetailsResponseType } from '@/app/types/pokemonResponseTypes';
+import type { PokemonDetailsType } from '@/types/pokemonTypes';
+import type { PokemonDetailsResponseType } from '@/types/pokemonResponseTypes';
 
 const mapDetails = ({
 	types,

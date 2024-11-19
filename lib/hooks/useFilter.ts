@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '@/app/lib/redux/hooks';
-import { selectFilterParams } from '@/app/lib/redux/selectors';
-import { changeFilterAction, clearFilterAction } from '@/app/lib/redux/actions';
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
+import { selectFilterParams } from '@/lib/redux/selectors';
+import { changeFilterAction, clearFilterAction } from '@/lib/redux/actions';
 
 import type { ChangeEventHandler } from 'react';
 

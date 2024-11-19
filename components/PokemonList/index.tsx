@@ -1,17 +1,14 @@
 'use client';
 
 import { memo } from 'react';
-import PokemonCard from '@/app/ui/PokemonCard';
-import Nothing from '@/app/ui/Nothing';
+import PokemonCard from '@/ui/PokemonCard';
+import Nothing from '@/ui/Nothing';
 
-import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
-import useScroll from '@/app/lib/hooks/useScroll';
-import useFavorite from '@/app/lib/hooks/useFavorite';
-import { useAppSelector } from '@/app/lib/redux/hooks';
-import {
-	selectFavorites,
-	selectFilterPokemon,
-} from '@/app/lib/redux/selectors';
+import type { PokemonDetailsType } from '@/types/pokemonTypes';
+import useScroll from '@/lib/hooks/useScroll';
+import useFavorite from '@/lib/hooks/useFavorite';
+import { useAppSelector } from '@/lib/redux/hooks';
+import { selectFavorites, selectFilterPokemon } from '@/lib/redux/selectors';
 
 type PokemonPropsType = {
 	pokemon: PokemonDetailsType[];
@@ -20,7 +17,7 @@ type PokemonPropsType = {
 
 const PokemonList = (props: PokemonPropsType) => {
 	const listRef = useScroll(props);
-
+	console.log('render pokemon list');
 	const { addFavorite, removeFavorite } = useFavorite();
 
 	const pokemonList = useAppSelector(selectFilterPokemon);

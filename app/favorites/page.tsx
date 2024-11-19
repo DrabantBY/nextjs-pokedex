@@ -1,4 +1,4 @@
-import FavoritesList from '../components/FavoritesList';
+import FavoritesList from '../../components/FavoritesList';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

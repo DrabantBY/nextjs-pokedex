@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useAppDispatch } from '@/app/lib/redux/hooks';
-import { addPokemonAction } from '@/app/lib/redux/actions';
-import { getPokemonList } from '@/app/lib/fetch/fetchPokemon';
+import { useAppDispatch } from '@/lib/redux/hooks';
+import { addPokemonAction } from '@/lib/redux/actions';
+import { getPokemonList } from '@/lib/fetch/fetchPokemon';
 
-import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
+import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 type UseScrollInitDataType = {
 	next: string | null;

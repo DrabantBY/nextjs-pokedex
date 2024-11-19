@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
+import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 type PokemonStateType = {
 	pokemon: PokemonDetailsType[];

@@ -3,8 +3,8 @@ import mapDetails from '../utils/mapDetails';
 import type {
 	PokemonDetailsResponseType,
 	PokemonUrlNameResponseType,
-} from '@/app/types/pokemonResponseTypes';
-import type { PokemonDetailsType } from '@/app/types/pokemonTypes';
+} from '@/types/pokemonResponseTypes';
+import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 const POKEMON_URL = `${process.env.BASE_URL}pokemon/`;
 
