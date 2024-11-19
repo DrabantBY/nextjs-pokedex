@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
 import type { MouseEventHandler } from 'react';
 import type { PokemonDetailsType } from '@/types/pokemonTypes';
 

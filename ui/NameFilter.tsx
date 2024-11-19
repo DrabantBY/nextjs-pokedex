@@ -1,6 +1,5 @@
 import debounce from 'lodash.debounce';
 import { memo, useEffect, useState } from 'react';
-
 import type { ChangeEvent, ChangeEventHandler } from 'react';
 
 type NameFilterPropsType = {

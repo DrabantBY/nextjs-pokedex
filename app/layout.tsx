@@ -1,6 +1,6 @@
 import localFont from 'next/font/local';
 import Template from '@/app/Template';
-import StoreProvider from '../lib/redux/StoreProvider';
+import StoreProvider from '@/lib/redux/StoreProvider';
 
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';

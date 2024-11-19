@@ -1,4 +1,4 @@
-import NavLink from './NavLink';
+import NavLink from '@/ui/NavLink';
 
 type ErrorAlertPropsType = {
 	message: string;

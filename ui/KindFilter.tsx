@@ -1,5 +1,4 @@
 import { memo } from 'react';
-
 import type { ChangeEventHandler } from 'react';
 
 type KindFilterPropsType = {
