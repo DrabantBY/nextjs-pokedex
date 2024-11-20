@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 import { selectFilterParams } from '@/lib/redux/selectors';
 import { changeFilterAction, clearFilterAction } from '@/lib/redux/actions';
-
 import type { ChangeEventHandler } from 'react';
 
 const useFilter = () => {

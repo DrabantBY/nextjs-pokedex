@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useAppDispatch } from '@/lib/redux/hooks';
+import { useEffect, useRef, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 import { addPokemonAction } from '@/lib/redux/actions';
 import { getPokemonList } from '@/lib/fetch/fetchPokemon';
-
+import { selectFilterPokemon } from '@/lib/redux/selectors';
 import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 type UseScrollInitDataType = {
@@ -11,50 +11,43 @@ type UseScrollInitDataType = {
 };
 
 const useScroll = ({ next, pokemon }: UseScrollInitDataType) => {
-	const listRef = useRef<HTMLUListElement | null>(null);
+	const ref = useRef<HTMLDivElement | null>(null);
+	const pokemonList = useAppSelector(selectFilterPokemon);
 
 	const [url, setUrl] = useState(next);
 
-	const [list, setList] = useState(pokemon);
-
 	const dispatch = useAppDispatch();
 
-	const addPokemonList = useCallback(
-		({ next, pokemon }: UseScrollInitDataType) => {
-			setUrl(next);
-			setList(pokemon);
-			dispatch(addPokemonAction(pokemon));
-		},
-		[dispatch]
-	);
-
-	const handleScroll = useCallback(
-		(url: string | null) => {
-			const listBottom = listRef.current?.getBoundingClientRect().bottom;
-
-			const { clientHeight } = document.documentElement;
-
-			if (url && listBottom && listBottom <= clientHeight) {
-				getPokemonList(url).then(addPokemonList);
-			}
-		},
-		[addPokemonList]
-	);
+	useEffect(() => {
+		dispatch(addPokemonAction(pokemon));
+	}, [pokemon]);
 
 	useEffect(() => {
-		const data = { next: url, pokemon: list };
-		addPokemonList(data);
-	}, [addPokemonList, url, list]);
+		const observer = new IntersectionObserver(
+			async ([spinner]) => {
+				if (spinner.isIntersecting) {
+					if (url) {
+						const { next, pokemon } = await getPokemonList(url);
+						setUrl(next);
+						dispatch(addPokemonAction(pokemon));
+					}
+				}
+			},
+			{ threshold: 0.5 }
+		);
 
-	useEffect(() => {
-		window.onscroll = () => handleScroll(url);
+		if (ref.current) {
+			observer.observe(ref.current);
+		}
 
 		return () => {
-			window.onscroll = null;
+			if (ref.current) {
+				observer.unobserve(ref.current);
+			}
 		};
-	}, [handleScroll, url]);
+	});
 
-	return listRef;
+	return { ref, pokemonList };
 };
 
 export default useScroll;

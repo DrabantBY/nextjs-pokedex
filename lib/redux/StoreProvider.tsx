@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { Provider } from 'react-redux';
 import { makeStore } from './store';
-
 import type { ReactNode } from 'react';
 import type { AppStore } from './store';
 
