@@ -26,8 +26,7 @@ const DetailsPage = async ({ params, searchParams }: DetailsPagePropsType) => {
 
 	const { src, name, kinds, data, weight, height } = pokemon;
 
-	const favoriteClass =
-		favorite === 'true' ? 'text-green-600' : 'text-gray-600';
+	const favoriteClass = parseInt(favorite) ? 'text-green-600' : 'text-gray-600';
 
 	return (
 		<section className="grow flex justify-center items-center my-4">

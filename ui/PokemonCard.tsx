@@ -5,20 +5,18 @@ import type { MouseEventHandler } from 'react';
 import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 type PokemonCardPropsType = PokemonDetailsType & {
-	favorite: boolean;
-	toggleFavorite: (value: PokemonDetailsType) => void;
+	toggleFavorite: (id: number) => void;
 };
 
 export const PokemonCard = ({
 	toggleFavorite,
-	favorite,
 	...character
 }: PokemonCardPropsType) => {
-	const { src, name, kinds } = character;
+	const { id, favorite, src, name, kinds } = character;
 
 	const handleOnClick: MouseEventHandler<HTMLButtonElement> = (event) => {
 		event.preventDefault();
-		toggleFavorite(character);
+		toggleFavorite(id);
 	};
 
 	const active = favorite
@@ -30,7 +28,7 @@ export const PokemonCard = ({
 			<Link
 				href={{
 					pathname: `/pokemon/${name}`,
-					query: { favorite },
+					query: { favorite: favorite ? '1' : '0' },
 				}}
 			>
 				<figure

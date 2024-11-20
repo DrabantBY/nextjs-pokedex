@@ -19,6 +19,7 @@ const useScroll = ({ next, pokemon }: UseScrollInitDataType) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
+		console.log('effect first pokemon');
 		dispatch(addPokemonAction(pokemon));
 	}, [pokemon]);
 
@@ -41,9 +42,7 @@ const useScroll = ({ next, pokemon }: UseScrollInitDataType) => {
 		}
 
 		return () => {
-			if (ref.current) {
-				observer.unobserve(ref.current);
-			}
+			observer.disconnect();
 		};
 	});
 

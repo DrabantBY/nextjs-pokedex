@@ -1,14 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {
-	favoritesReducer,
-	filterParamsReducer,
-	pokemonReducer,
-} from './reducers';
+import { filterParamsReducer, pokemonReducer } from './reducers';
 
 export const makeStore = () => {
 	const store = configureStore({
 		reducer: {
-			favorites: favoritesReducer,
 			pokemon: pokemonReducer,
 			filters: filterParamsReducer,
 		},

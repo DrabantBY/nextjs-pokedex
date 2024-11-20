@@ -3,6 +3,7 @@ export type PokemonCommonType = {
 	name: string;
 	height: number;
 	weight: number;
+	favorite?: boolean;
 };
 
 export type PokemonDetailsType = PokemonCommonType & {

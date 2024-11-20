@@ -17,7 +17,29 @@ const pokemonSlice = createSlice({
 
 	reducers: {
 		addPokemonAction: (state, action: PayloadAction<PokemonDetailsType[]>) => {
-			state.list = state.list.concat(action.payload);
+			if (state.list.at(-1)?.id !== action.payload.at(-1)?.id) {
+				state.list = state.list.concat(action.payload);
+			}
+		},
+
+		setFavoritePokemonAction: (state, action: PayloadAction<number>) => {
+			state.list = state.list.map((pokemon) => {
+				if (pokemon.id === action.payload) {
+					pokemon.favorite = true;
+				}
+
+				return pokemon;
+			});
+		},
+
+		remFavoritePokemonAction: (state, action: PayloadAction<number>) => {
+			state.list = state.list.map((pokemon) => {
+				if (pokemon.id === action.payload) {
+					pokemon.favorite = false;
+				}
+
+				return pokemon;
+			});
 		},
 	},
 });
