@@ -19,9 +19,10 @@ const useScroll = ({ next, pokemon }: UseScrollInitDataType) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		console.log('effect first pokemon');
-		dispatch(addPokemonAction(pokemon));
-	}, [pokemon]);
+		if (pokemonList.length === 0) {
+			dispatch(addPokemonAction(pokemon));
+		}
+	}, [pokemon, pokemonList]);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
