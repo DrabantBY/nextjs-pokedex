@@ -1,4 +1,3 @@
-import debounce from 'lodash.debounce';
 import { memo, useEffect, useState } from 'react';
 import type { ChangeEvent, ChangeEventHandler } from 'react';
 
@@ -14,11 +13,9 @@ const NameFilter = ({ value, onChange }: NameFilterPropsType) => {
 		setState(value);
 	}, [value]);
 
-	const debounceOnChange = debounce(onChange, 2000);
-
 	const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setState(event.target.value);
-		debounceOnChange(event);
+		onChange(event);
 	};
 
 	return (
@@ -37,7 +34,7 @@ const NameFilter = ({ value, onChange }: NameFilterPropsType) => {
 				className="block flex-1 border-0 bg-transparent pl-1 py-2 text-gray-500 focus:ring-0 outline-none"
 				value={state}
 				onChange={handleOnChange}
-			></input>
+			/>
 		</div>
 	);
 };
