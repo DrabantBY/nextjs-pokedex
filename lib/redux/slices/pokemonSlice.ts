@@ -17,9 +17,6 @@ const pokemonSlice = createSlice({
 
 	reducers: {
 		addPokemonAction: (state, action: PayloadAction<PokemonDetailsType[]>) => {
-			if (state.list.some((item) => item.id === action.payload[0].id)) {
-				return;
-			}
 			state.list = state.list.concat(action.payload);
 		},
 	},
