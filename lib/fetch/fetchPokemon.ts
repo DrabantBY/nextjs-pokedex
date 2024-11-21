@@ -14,9 +14,7 @@ export const getUrlList = async (
 	next: string | null;
 	urls: string[];
 }> => {
-	const response = await fetch(url, {
-		cache: 'force-cache',
-	});
+	const response = await fetch(url);
 
 	if (!response.ok) {
 		throw new Error(response.statusText);
@@ -31,9 +29,7 @@ export const getPokemonDetails = async (
 	url: string,
 	slug: string | number
 ): Promise<PokemonDetailsType> => {
-	const response = await fetch(`${url || POKEMON_URL}${slug}`, {
-		cache: 'force-cache',
-	});
+	const response = await fetch(`${url || POKEMON_URL}${slug}`);
 
 	if (!response.ok) {
 		throw new Error(response.statusText);

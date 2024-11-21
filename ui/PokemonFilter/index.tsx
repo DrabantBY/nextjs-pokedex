@@ -1,8 +1,8 @@
 'use client';
 
 import { memo } from 'react';
-import KindFilter from '@/components/PokemonFilter/KindFilter';
-import NameFilter from '@/components/PokemonFilter/NameFilter';
+import KindFilter from '@/ui/PokemonFilter/KindFilter';
+import NameFilter from '@/ui/PokemonFilter/NameFilter';
 import useFilter from '@/lib/hooks/useFilter';
 
 type PokemonFilterPropsType = {

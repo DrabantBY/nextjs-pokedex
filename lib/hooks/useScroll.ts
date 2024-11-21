@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 import { addPokemonAction } from '@/lib/redux/actions';
 import { getPokemonList } from '@/lib/fetch/fetchPokemon';
@@ -19,23 +19,19 @@ const useScroll = ({ next, pokemon }: UseScrollInitDataType) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		if (pokemonList.length === 0) {
-			dispatch(addPokemonAction(pokemon));
-		}
-	}, [pokemon, pokemonList]);
+		dispatch(addPokemonAction(pokemon));
+	}, [pokemon]);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
 			async ([spinner]) => {
-				if (spinner.isIntersecting) {
-					if (url) {
-						const { next, pokemon } = await getPokemonList(url);
-						setUrl(next);
-						dispatch(addPokemonAction(pokemon));
-					}
+				if (spinner.isIntersecting && url) {
+					const { next, pokemon } = await getPokemonList(url);
+					setUrl(next);
+					dispatch(addPokemonAction(pokemon));
 				}
 			},
-			{ threshold: 0.5 }
+			{ threshold: 0.7 }
 		);
 
 		if (ref.current) {
@@ -47,7 +43,7 @@ const useScroll = ({ next, pokemon }: UseScrollInitDataType) => {
 		};
 	});
 
-	return { ref, pokemonList };
+	return { ref, pokemonList, url };
 };
 
 export default useScroll;

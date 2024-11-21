@@ -8,17 +8,19 @@ import {
 const useFavorite = () => {
 	const dispatch = useAppDispatch();
 
-	const setFavoritePokemon = useCallback(
-		(id: number) => dispatch(setFavoritePokemonAction(id)),
-		[dispatch]
+	const toggleFavoritePokemon = useCallback(
+		(id: number, favorite: boolean = false) => {
+			if (favorite) {
+				dispatch(remFavoritePokemonAction(id));
+			} else {
+				dispatch(setFavoritePokemonAction(id));
+			}
+		},
+
+		[]
 	);
 
-	const remFavoritePokemon = useCallback(
-		(id: number) => dispatch(remFavoritePokemonAction(id)),
-		[dispatch]
-	);
-
-	return { setFavoritePokemon, remFavoritePokemon };
+	return toggleFavoritePokemon;
 };
 
 export default useFavorite;

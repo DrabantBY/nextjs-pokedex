@@ -1,4 +1,4 @@
-import FavoritesList from '@/components/FavoritesList';
+import Favorites from '@/ui/Favorites';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -6,8 +6,6 @@ export const metadata: Metadata = {
 	description: 'Pokedex app favorites page',
 };
 
-const FavoritesPage = async () => {
-	return <FavoritesList />;
-};
+const FavoritesPage = async () => <Favorites />;
 
 export default FavoritesPage;

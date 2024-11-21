@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import PokemonList from '@/components/PokemonList';
-import PokemonFilter from '@/components/PokemonFilter';
+import Pokemon from '@/ui/Pokemon';
+import PokemonFilter from '@/ui/PokemonFilter';
 import { getPokemonList } from '@/lib/fetch/fetchPokemon';
 import { getKindList } from '@/lib/fetch/fetchPokemonKinds';
 
@@ -15,7 +15,7 @@ const PokemonPage = async () => {
 	return (
 		<>
 			<PokemonFilter kinds={kinds} />
-			<PokemonList {...data} />
+			<Pokemon {...data} />
 		</>
 	);
 };

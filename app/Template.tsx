@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+import Header from '@/ui/Header';
 import type { ReactNode } from 'react';
 
 const Template = ({ children }: { children: ReactNode }) => {
