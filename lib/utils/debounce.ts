@@ -1,7 +1,7 @@
 const debounce = <T extends (...args: any[]) => any>(fn: T, time: number) => {
 	let timer: ReturnType<typeof setTimeout> | null = null;
 
-	const debounceFn = (...args: Parameters<T>) => {
+	const debouncedFn = (...args: Parameters<T>) => {
 		if (timer) {
 			clearTimeout(timer);
 		}
@@ -12,13 +12,13 @@ const debounce = <T extends (...args: any[]) => any>(fn: T, time: number) => {
 		}, time);
 	};
 
-	debounceFn.reset = () => {
+	debouncedFn.reset = () => {
 		if (timer) {
 			clearTimeout(timer);
 		}
 	};
 
-	return debounceFn;
+	return debouncedFn;
 };
 
 export default debounce;
