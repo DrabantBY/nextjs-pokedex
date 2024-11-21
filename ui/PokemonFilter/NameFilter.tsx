@@ -1,12 +1,22 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import useDebounce from '@/lib/hooks/useDebounce';
 import type { ChangeEventHandler } from 'react';
 
 type NameFilterPropsType = {
-	value: string;
+	state: string;
 	onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
-const NameFilter = ({ value, onChange }: NameFilterPropsType) => {
+const NameFilter = ({ state, onChange }: NameFilterPropsType) => {
+	const [value, setValue] = useState(state);
+
+	const debouncedOnChange = useDebounce(onChange, 2000);
+
+	const handleOnchange: ChangeEventHandler<HTMLInputElement> = (event) => {
+		setValue(event.target.value);
+		debouncedOnChange(event);
+	};
+
 	return (
 		<div className="w-56 flex rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-gray-600">
 			<label
@@ -22,7 +32,7 @@ const NameFilter = ({ value, onChange }: NameFilterPropsType) => {
 				type="text"
 				className="block flex-1 border-0 bg-transparent pl-1 py-2 text-gray-500 focus:ring-0 outline-none"
 				value={value}
-				onChange={onChange}
+				onChange={handleOnchange}
 			/>
 		</div>
 	);

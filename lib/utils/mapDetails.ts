@@ -9,7 +9,7 @@ const mapDetails = ({
 }: PokemonDetailsResponseType): PokemonDetailsType => {
 	const kinds = types.map(({ type }) => type.name);
 
-	const src = sprites.other.dream_world.front_default;
+	const src = sprites.other['official-artwork'].front_default;
 
 	const data = stats.map(({ base_stat, stat }) => ({
 		[stat.name]: base_stat,

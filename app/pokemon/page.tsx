@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 };
 
 const PokemonPage = async () => {
-	const [data, kinds] = await Promise.all([getPokemonList(), getKindList()]);
+	const kinds = await getKindList();
 
 	return (
 		<>
 			<PokemonFilter kinds={kinds} />
-			<Pokemon {...data} />
+			<Pokemon />
 		</>
 	);
 };

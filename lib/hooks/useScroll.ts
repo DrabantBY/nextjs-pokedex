@@ -1,34 +1,24 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
-import { addPokemonAction } from '@/lib/redux/actions';
-import { getPokemonList } from '@/lib/fetch/fetchPokemon';
-import { selectFilterPokemon } from '@/lib/redux/selectors';
-import type { PokemonDetailsType } from '@/types/pokemonTypes';
+import { selectFilterPokemon, selectNext } from '@/lib/redux/selectors';
+import fetchPokemonList from '@/lib/redux/thunks';
 
-type UseScrollInitDataType = {
-	next: string | null;
-	pokemon: PokemonDetailsType[];
-};
-
-const useScroll = ({ next, pokemon }: UseScrollInitDataType) => {
+const useScroll = () => {
 	const ref = useRef<HTMLDivElement | null>(null);
-	const pokemonList = useAppSelector(selectFilterPokemon);
-
-	const [url, setUrl] = useState(next);
 
 	const dispatch = useAppDispatch();
+	const pokemon = useAppSelector(selectFilterPokemon);
+	const next = useAppSelector(selectNext);
 
 	useEffect(() => {
-		dispatch(addPokemonAction(pokemon));
-	}, [pokemon]);
+		dispatch(fetchPokemonList());
+	}, []);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
-			async ([spinner]) => {
-				if (spinner.isIntersecting && url) {
-					const { next, pokemon } = await getPokemonList(url);
-					setUrl(next);
-					dispatch(addPokemonAction(pokemon));
+			([spinner]) => {
+				if (spinner.isIntersecting && next) {
+					dispatch(fetchPokemonList(next));
 				}
 			},
 			{ threshold: 0.7 }
@@ -39,11 +29,13 @@ const useScroll = ({ next, pokemon }: UseScrollInitDataType) => {
 		}
 
 		return () => {
-			observer.disconnect();
+			if (ref.current) {
+				observer.unobserve(ref.current);
+			}
 		};
 	});
 
-	return { ref, pokemonList, url };
+	return { ref, pokemon, next };
 };
 
 export default useScroll;

@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
+import fetchPokemonList from '@/lib/redux/thunks';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 type PokemonStateType = {
 	list: PokemonDetailsType[];
+	next: string | null;
 };
 
 const initialPokemonState: PokemonStateType = {
 	list: [],
+	next: null,
 };
 
 const pokemonSlice = createSlice({
@@ -39,6 +42,13 @@ const pokemonSlice = createSlice({
 				return pokemon;
 			});
 		},
+	},
+
+	extraReducers: (builder) => {
+		builder.addCase(fetchPokemonList.fulfilled, (state, action) => {
+			state.list = state.list.concat(action.payload.pokemon);
+			state.next = action.payload.next;
+		});
 	},
 });
 

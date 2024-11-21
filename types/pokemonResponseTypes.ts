@@ -2,8 +2,8 @@ import type { PokemonCommonType } from './pokemonTypes';
 
 type PokemonSpritesType = {
 	other: {
-		dream_world: {
-			front_default: string;
+		'official-artwork': {
+			front_default: string | null;
 		};
 	};
 };

@@ -1,5 +1,5 @@
 const Spinner = () => (
-	<div role="status" className="flex flex-auto items-center justify-center">
+	<div role="status" className="flex grow items-center justify-center">
 		<svg
 			aria-hidden="true"
 			className="inline size-12 text-gray-200 animate-spin dark:text-gray-600 fill-gray-900"

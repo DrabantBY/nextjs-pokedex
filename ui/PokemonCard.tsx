@@ -29,13 +29,13 @@ export const PokemonCard = ({ toggle, ...character }: PokemonCardPropsType) => {
 				}}
 			>
 				<figure
-					className={`relative h-36 w-full bg-gray-${
+					className={`relative h-48 w-full bg-gray-${
 						favorite ? 700 : 100
 					} group-hover:bg-gray-${favorite ? 500 : 200}`}
 				>
 					<Image
 						className="p-2"
-						src={src}
+						src={src || '/pokemonball.svg'}
 						alt="Pokemon picture"
 						fill={true}
 						priority
