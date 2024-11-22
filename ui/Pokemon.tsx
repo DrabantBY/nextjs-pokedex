@@ -19,7 +19,7 @@ const Pokemon = () => {
 				<PokemonList pokemon={pokemon} toggle={toggleFavoritePokemon} />
 			) : null}
 			{next ? (
-				<div ref={ref} className="mb-4 grow">
+				<div ref={ref} className="mb-4 flex grow items-center">
 					<Spinner />
 				</div>
 			) : null}

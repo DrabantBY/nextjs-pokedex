@@ -29,7 +29,7 @@ export const PokemonCard = ({ toggle, ...character }: PokemonCardPropsType) => {
 				}}
 			>
 				<figure
-					className={`relative h-48 w-full bg-gray-${
+					className={`relative w-full h-60 xs:h-40 md:h-44 lg:h-48 xl:h-52 bg-gray-${
 						favorite ? 700 : 100
 					} group-hover:bg-gray-${favorite ? 500 : 200}`}
 				>
@@ -39,6 +39,7 @@ export const PokemonCard = ({ toggle, ...character }: PokemonCardPropsType) => {
 						alt="Pokemon picture"
 						fill={true}
 						priority
+						sizes="(min-width: 420px) 40vw, (min-width: 640px) 25vw, (min-width: 768px) 20vw, 90vw"
 					/>
 				</figure>
 
@@ -48,12 +49,11 @@ export const PokemonCard = ({ toggle, ...character }: PokemonCardPropsType) => {
 					<span className="flex gap-1 cursor-pointer flex-wrap sm:flex-nowrap mw-">
 						{kinds.map((kind) => (
 							<Image
-								className="min-w-4 min-h-4 size-4 sm:size-8"
 								key={kind}
 								src={`/${kind}.svg`}
 								alt="Pokemon kind picture"
-								width={32}
-								height={32}
+								width={24}
+								height={24}
 								title={kind}
 							/>
 						))}

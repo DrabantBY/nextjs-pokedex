@@ -10,7 +10,7 @@ type NameFilterPropsType = {
 const NameFilter = ({ state, onChange }: NameFilterPropsType) => {
 	const [value, setValue] = useState(state);
 
-	const debouncedOnChange = useDebounce(onChange, 2000);
+	const debouncedOnChange = useDebounce(onChange, 500);
 
 	const handleOnchange: ChangeEventHandler<HTMLInputElement> = (event) => {
 		setValue(event.target.value);
