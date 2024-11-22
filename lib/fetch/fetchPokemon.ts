@@ -44,13 +44,11 @@ export const getPokemonList = async (
 	url: string = POKEMON_URL
 ): Promise<{
 	next: string | null;
-	pokemon: PokemonDetailsType[];
+	list: PokemonDetailsType[];
 }> => {
 	const { next, urls } = await getUrlList(url);
 
-	const pokemon = await Promise.all(
-		urls.map((url) => getPokemonDetails(url, ''))
-	);
+	const list = await Promise.all(urls.map((url) => getPokemonDetails(url, '')));
 
-	return { pokemon, next };
+	return { list, next };
 };

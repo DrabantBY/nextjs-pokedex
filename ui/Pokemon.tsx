@@ -8,7 +8,6 @@ import useFavorite from '@/lib/hooks/useFavorite';
 
 const Pokemon = () => {
 	const { ref, pokemon, next } = useScroll();
-	console.log('render pokemon list');
 
 	const toggleFavoritePokemon = useFavorite();
 

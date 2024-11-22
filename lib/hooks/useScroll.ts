@@ -11,10 +11,6 @@ const useScroll = () => {
 	const next = useAppSelector(selectNext);
 
 	useEffect(() => {
-		dispatch(fetchPokemonList());
-	}, []);
-
-	useEffect(() => {
 		const observer = new IntersectionObserver(
 			([spinner]) => {
 				if (spinner.isIntersecting && next) {

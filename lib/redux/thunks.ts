@@ -4,8 +4,8 @@ import { getPokemonList } from '../fetch/fetchPokemon';
 const fetchPokemonList = createAsyncThunk(
 	'pokemon/fetchPokemonList',
 	async (url?: string) => {
-		const { next, pokemon } = await getPokemonList(url);
-		return { next, pokemon };
+		const response = await getPokemonList(url);
+		return response;
 	}
 );
 

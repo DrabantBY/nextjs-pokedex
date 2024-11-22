@@ -1,6 +1,5 @@
 import localFont from 'next/font/local';
 import Template from '@/app/Template';
-import StoreProvider from '@/lib/redux/StoreProvider';
 
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
@@ -30,9 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
 			>
-				<StoreProvider>
-					<Template>{children}</Template>
-				</StoreProvider>
+				<Template>{children}</Template>
 			</body>
 		</html>
 	);

@@ -19,6 +19,13 @@ const pokemonSlice = createSlice({
 	initialState: initialPokemonState,
 
 	reducers: {
+		setInitialPokemonAction: (
+			state,
+			action: PayloadAction<PokemonStateType>
+		) => {
+			state = Object.assign(state, action.payload);
+		},
+
 		addPokemonAction: (state, action: PayloadAction<PokemonDetailsType[]>) => {
 			state.list = state.list.concat(action.payload);
 		},
@@ -45,10 +52,13 @@ const pokemonSlice = createSlice({
 	},
 
 	extraReducers: (builder) => {
-		builder.addCase(fetchPokemonList.fulfilled, (state, action) => {
-			state.list = state.list.concat(action.payload.pokemon);
-			state.next = action.payload.next;
-		});
+		builder.addCase(
+			fetchPokemonList.fulfilled,
+			(state, action: PayloadAction<PokemonStateType>) => {
+				state.list = state.list.concat(action.payload.list);
+				state.next = action.payload.next;
+			}
+		);
 	},
 });
 
