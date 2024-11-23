@@ -33,7 +33,11 @@ const DetailsPage = async ({ params, searchParams }: DetailsPagePropsType) => {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="relative w-full flex flex-col gap-x-8 gap-y-2 p-2 sm:p-4 border border-gray-200 rounded-lg shadow sm:flex-row hover:bg-gray-100">
 					<figure className="relative w-full h-64 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
-						<Image src={src} alt="Pokemon picture" fill={true} />
+						<Image
+							src={src || '/pokemonball.svg'}
+							alt="Pokemon picture"
+							fill={true}
+						/>
 					</figure>
 
 					<div className="">
