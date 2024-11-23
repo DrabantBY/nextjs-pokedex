@@ -1,5 +1,5 @@
 import pokemonSlice from './slices/pokemonSlice';
-import filterParamsSlice from './slices/filterParamsSlice';
+import filterSlice from './slices/filterSlice';
 
 export const pokemonReducer = pokemonSlice.reducer;
-export const filterParamsReducer = filterParamsSlice.reducer;
+export const filterReducer = filterSlice.reducer;

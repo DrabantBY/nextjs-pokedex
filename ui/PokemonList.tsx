@@ -4,7 +4,7 @@ import { PokemonDetailsType } from '@/types/pokemonTypes';
 
 type PokemonListPropsType = {
 	pokemon: PokemonDetailsType[];
-	toggle: (id: number, favorite?: boolean) => void;
+	toggle: (id: number, favorite: boolean) => void;
 };
 
 const PokemonList = ({ pokemon, toggle }: PokemonListPropsType) => (

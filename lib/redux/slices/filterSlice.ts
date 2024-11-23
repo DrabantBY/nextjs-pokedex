@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export type FilterParamsStateType = {
+export type FilterStateType = {
 	name: string;
 	kind: string;
 };
 
-const initialFilterParamsState: FilterParamsStateType = {
+const initialFilterState: FilterStateType = {
 	name: '',
 	kind: '',
 };
 
-const filterParamsSlice = createSlice({
+const filterSlice = createSlice({
 	name: 'filters',
 
-	initialState: initialFilterParamsState,
+	initialState: initialFilterState,
 
 	reducers: {
 		changeFilterAction: (
@@ -24,8 +24,8 @@ const filterParamsSlice = createSlice({
 			state = Object.assign(state, action.payload);
 		},
 
-		clearFilterAction: () => initialFilterParamsState,
+		clearFilterAction: () => initialFilterState,
 	},
 });
 
-export default filterParamsSlice;
+export default filterSlice;

@@ -4,10 +4,10 @@ import Nothing from '@/ui/Nothing';
 import useFavorite from '@/lib/hooks/useFavorite';
 import PokemonList from './PokemonList';
 import { useAppSelector } from '@/lib/redux/hooks';
-import { selectFavoritesPokemon } from '@/lib/redux/selectors';
+import { selectFavorite } from '@/lib/redux/selectors';
 
 const Favorites = () => {
-	const favorites = useAppSelector(selectFavoritesPokemon);
+	const favorites = useAppSelector(selectFavorite);
 
 	const toggleFavoritePokemon = useFavorite();
 

@@ -1,4 +1,4 @@
-import type { PokemonCommonType } from './pokemonTypes';
+import type { PokemonCommonType, PokemonDetailsType } from './pokemonTypes';
 
 type PokemonSpritesType = {
 	other: {

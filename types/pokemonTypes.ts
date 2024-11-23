@@ -11,3 +11,8 @@ export type PokemonDetailsType = PokemonCommonType & {
 	kinds: string[];
 	data: Record<string, number>[];
 };
+
+export type PokemonListType = {
+	list: PokemonDetailsType[];
+	next: null | string;
+};

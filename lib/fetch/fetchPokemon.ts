@@ -1,10 +1,9 @@
-import mapDetails from '../utils/mapDetails';
-
+import mapDetails from '@/lib//utils/mapDetails';
+import type { PokemonDetailsType, PokemonListType } from '@/types/pokemonTypes';
 import type {
 	PokemonDetailsResponseType,
 	PokemonUrlNameResponseType,
 } from '@/types/pokemonResponseTypes';
-import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 const POKEMON_URL = `${process.env.BASE_URL}pokemon/`;
 
@@ -42,10 +41,7 @@ export const getPokemonDetails = async (
 
 export const getPokemonList = async (
 	url: string = POKEMON_URL
-): Promise<{
-	next: string | null;
-	list: PokemonDetailsType[];
-}> => {
+): Promise<PokemonListType> => {
 	const { next, urls } = await getUrlList(url);
 
 	const list = await Promise.all(urls.map((url) => getPokemonDetails(url, '')));

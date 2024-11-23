@@ -1,4 +1,4 @@
-import { FilterParamsStateType } from '@/lib/redux/slices/filterParamsSlice';
+import { FilterParamsStateType } from '@/lib/redux/slices/filterSlice';
 import type { PokemonDetailsType } from '@/types/pokemonTypes';
 
 const filterPokemon = (

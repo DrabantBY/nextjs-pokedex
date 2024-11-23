@@ -1,26 +1,19 @@
 import { useCallback } from 'react';
 import { useAppDispatch } from '@/lib/redux/hooks';
-import {
-	setFavoritePokemonAction,
-	remFavoritePokemonAction,
-} from '@/lib/redux/actions';
+import { setFavoritePokemonAction } from '@/lib/redux/actions';
 
 const useFavorite = () => {
 	const dispatch = useAppDispatch();
 
-	const toggleFavoritePokemon = useCallback(
-		(id: number, favorite: boolean = false) => {
-			if (favorite) {
-				dispatch(remFavoritePokemonAction(id));
-			} else {
-				dispatch(setFavoritePokemonAction(id));
-			}
+	const setFavoritePokemon = useCallback(
+		(id: number, favorite: boolean) => {
+			dispatch(setFavoritePokemonAction({ id, changes: { favorite } }));
 		},
 
 		[dispatch]
 	);
 
-	return toggleFavoritePokemon;
+	return setFavoritePokemon;
 };
 
 export default useFavorite;

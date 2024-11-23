@@ -1,61 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 import fetchPokemonList from '@/lib/redux/thunks';
+import { createEntityAdapter } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { PokemonDetailsType } from '@/types/pokemonTypes';
+import type { PokemonDetailsType, PokemonListType } from '@/types/pokemonTypes';
 
-type PokemonStateType = {
-	list: PokemonDetailsType[];
-	next: string | null;
-};
+export const pokemonEntities = createEntityAdapter<PokemonDetailsType>();
 
-const initialPokemonState: PokemonStateType = {
-	list: [],
-	next: null,
-};
+const initialState = pokemonEntities.getInitialState({
+	next: null as string | null,
+});
 
 const pokemonSlice = createSlice({
 	name: 'pokemon',
 
-	initialState: initialPokemonState,
+	initialState,
 
 	reducers: {
 		setInitialPokemonAction: (
 			state,
-			action: PayloadAction<PokemonStateType>
+			action: PayloadAction<PokemonListType>
 		) => {
-			state = Object.assign(state, action.payload);
+			pokemonEntities.setAll(state, action.payload.list);
+			state.next = action.payload.next;
 		},
 
-		addPokemonAction: (state, action: PayloadAction<PokemonDetailsType[]>) => {
-			state.list = state.list.concat(action.payload);
-		},
-
-		setFavoritePokemonAction: (state, action: PayloadAction<number>) => {
-			state.list = state.list.map((pokemon) => {
-				if (pokemon.id === action.payload) {
-					pokemon.favorite = true;
-				}
-
-				return pokemon;
-			});
-		},
-
-		remFavoritePokemonAction: (state, action: PayloadAction<number>) => {
-			state.list = state.list.map((pokemon) => {
-				if (pokemon.id === action.payload) {
-					pokemon.favorite = false;
-				}
-
-				return pokemon;
-			});
-		},
+		setFavoritePokemonAction: pokemonEntities.updateOne,
 	},
 
 	extraReducers: (builder) => {
 		builder.addCase(
 			fetchPokemonList.fulfilled,
-			(state, action: PayloadAction<PokemonStateType>) => {
-				state.list = state.list.concat(action.payload.list);
+			(state, action: PayloadAction<PokemonListType>) => {
+				pokemonEntities.addMany(state, action.payload.list);
 				state.next = action.payload.next;
 			}
 		);
