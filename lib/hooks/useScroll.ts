@@ -1,14 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
-import { selectFilterPokemon, selectNext } from '@/lib/redux/selectors';
+import { useAppDispatch } from '@/lib/redux/hooks';
 import fetchPokemonList from '@/lib/redux/thunks';
 
-const useScroll = () => {
-	const ref = useRef<HTMLDivElement | null>(null);
+const useScroll = (next: string | null) => {
+	const ref = useRef<HTMLDivElement>(null);
 
 	const dispatch = useAppDispatch();
-	const pokemon = useAppSelector(selectFilterPokemon);
-	const next = useAppSelector(selectNext);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -31,7 +28,7 @@ const useScroll = () => {
 		};
 	});
 
-	return { ref, pokemon, next };
+	return { ref };
 };
 
 export default useScroll;

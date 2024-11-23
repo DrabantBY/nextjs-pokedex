@@ -5,9 +5,15 @@ import Nothing from '@/ui/Nothing';
 import Spinner from '@/ui/Spinner';
 import useScroll from '@/lib/hooks/useScroll';
 import useFavorite from '@/lib/hooks/useFavorite';
+import { useAppSelector } from '@/lib/redux/hooks';
+import { selectFilterPokemon, selectNext } from '@/lib/redux/selectors';
 
 const Pokemon = () => {
-	const { ref, pokemon, next } = useScroll();
+	const pokemon = useAppSelector(selectFilterPokemon);
+
+	const next = useAppSelector(selectNext);
+
+	const { ref } = useScroll(next);
 
 	const toggleFavoritePokemon = useFavorite();
 

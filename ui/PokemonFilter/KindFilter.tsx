@@ -9,7 +9,7 @@ type KindFilterPropsType = {
 
 const KindFilter = ({ options, ...props }: KindFilterPropsType) => {
 	return (
-		<div className="w-40 flex rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-gray-600">
+		<div className="w-40 grow xs:grow-0 flex rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-gray-600 xs:order-first">
 			<label
 				htmlFor="kind"
 				className="flex select-none items-center pl-3 text-gray-700 text-md"
