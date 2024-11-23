@@ -30,13 +30,14 @@ const DetailsPage = async ({ params, searchParams }: DetailsPagePropsType) => {
 
 	return (
 		<section className="grow flex justify-center items-center my-4">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="relative w-full flex flex-col gap-x-8 gap-y-2 p-2 sm:p-4 border border-gray-200 rounded-lg shadow sm:flex-row hover:bg-gray-100">
-					<figure className="relative w-full h-64 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
+			<div className="max-w-7xl grow mx-auto px-4 sm:px-6 lg:px-8 bg-color-red">
+				<div className="relative flex flex-col justify-center md:flex-row md:gap-x-4 lg:gap-x-6 xl:gap-x-8 gap-y-2 p-2 sm:p-4 border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+					<figure className="relative calc w-full md:w-[430] md:h-[430] lg:w-[500] lg:h-[500]">
 						<Image
 							src={src || '/pokemonball.svg'}
 							alt="Pokemon picture"
 							fill={true}
+							sizes="(min-width: 768px) 430px, (min-width: 1024px) 500px, 95vw"
 						/>
 					</figure>
 
