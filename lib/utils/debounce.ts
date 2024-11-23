@@ -8,7 +8,7 @@ const debounce = <T extends (...args: any[]) => any>(fn: T, time: number) => {
 
 		timer = setTimeout(() => {
 			timer = null;
-			fn.apply(null, args);
+			fn.apply(null, [...args]);
 		}, time);
 	};
 

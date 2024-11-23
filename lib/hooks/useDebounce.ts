@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useEffect } from 'react';
+import { useMemo, useEffect } from 'react';
 import debounce from '@/lib/utils/debounce';
 import useCallbackRef from './useCallbackRef';
 
@@ -12,7 +12,7 @@ const useDebounce = <Fn extends (...args: any[]) => any>(
 		return debounce((...args: Parameters<Fn>) => {
 			callbackRef(...args);
 		}, time);
-	}, [time]);
+	}, [time, callbackRef]);
 
 	useEffect(
 		() => () => {

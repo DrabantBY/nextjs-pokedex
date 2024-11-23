@@ -8,6 +8,7 @@ const useScroll = (next: string | null) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
+		const element = ref.current;
 		const observer = new IntersectionObserver(
 			([spinner]) => {
 				if (spinner.isIntersecting && next) {
@@ -17,13 +18,13 @@ const useScroll = (next: string | null) => {
 			{ threshold: 0.7 }
 		);
 
-		if (ref.current) {
-			observer.observe(ref.current);
+		if (element) {
+			observer.observe(element);
 		}
 
 		return () => {
-			if (ref.current) {
-				observer.unobserve(ref.current);
+			if (element) {
+				observer.unobserve(element);
 			}
 		};
 	});

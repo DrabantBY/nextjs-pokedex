@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Pokemon from '@/ui/Pokemon';
 import PokemonFilter from '@/ui/PokemonFilter';
-import { getPokemonList } from '@/lib/fetch/fetchPokemon';
 import { getKindList } from '@/lib/fetch/fetchPokemonKinds';
 
 export const metadata: Metadata = {

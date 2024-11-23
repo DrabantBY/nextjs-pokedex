@@ -17,7 +17,7 @@ const useFavorite = () => {
 			}
 		},
 
-		[]
+		[dispatch]
 	);
 
 	return toggleFavoritePokemon;

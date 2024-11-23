@@ -10,14 +10,17 @@ const useFilter = () => {
 	const dispatch = useAppDispatch();
 
 	const changeFilter: ChangeEventHandler<HTMLSelectElement | HTMLInputElement> =
-		useCallback((event) => {
-			const { name, value } = event.target;
-			dispatch(changeFilterAction({ [name]: value }));
-		}, []);
+		useCallback(
+			(event) => {
+				const { name, value } = event.target;
+				dispatch(changeFilterAction({ [name]: value }));
+			},
+			[dispatch]
+		);
 
 	const clearFilter = useCallback(() => {
 		dispatch(clearFilterAction());
-	}, []);
+	}, [dispatch]);
 
 	return { name, kind, changeFilter, clearFilter };
 };
